@@ -1,0 +1,4 @@
+https://codepen.io/nakessler/pen/qOdJWm
+
+Keyevents: https://stackoverflow.com/questions/16089421/simplest-way-to-detect-keypresses-in-javascript 
+Keyevent codes: https://css-tricks.com/snippets/javascript/javascript-keycodes/ 
