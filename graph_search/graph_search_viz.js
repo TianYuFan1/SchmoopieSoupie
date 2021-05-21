@@ -44,6 +44,7 @@ function create_grid_cell() {
  */
 function handle_grid_cell_click(e) {
   target = e.target;
+  console.log(get_grid_cell_coord(target));
   switch (get_selection_state()) {
     case START_SELECTION_STRING:
       check_cell_state(END_SELECTION_STRING, target);
@@ -136,13 +137,4 @@ function set_selection_state(new_text) {
  */
 function get_selection_state() {
   return document.getElementById("selection_state").innerText;
-}
-
-/**
- * @param {div} grid_cell
- * @returns index of gridcell within grid
- */
-function get_grid_cell_index(grid_cell) {
-  grid_container = document.getElementById("grid_container");
-  return Array.prototype.indexOf.call(grid_container.children, grid_cell);
 }
