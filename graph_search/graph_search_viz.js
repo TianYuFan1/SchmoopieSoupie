@@ -44,7 +44,15 @@ function create_grid_cell() {
  */
 function handle_grid_cell_click(e) {
   target = e.target;
-  console.log(get_grid_cell_coord(target));
+  // Test cite
+  neighbors = get_neighbors_of_8(target);
+  for (var i = 0; i < neighbors.length; i++) {
+    neighbor = neighbors[i];
+    div = get_div_from_coord(neighbor);
+    div.style.backgroundColor = "yellow";
+  }
+
+  // Test cite
   switch (get_selection_state()) {
     case START_SELECTION_STRING:
       check_cell_state(END_SELECTION_STRING, target);
