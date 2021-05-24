@@ -22,7 +22,7 @@ class BFS {
         current.style.backgroundColor = "purple";
       }
       // Get neighbors
-      var neighbors = get_neighbors_of_8_div(current);
+      var neighbors = get_neighbors(current);
       // Iterate over neighbors
       for (var i = 0; i < neighbors.length; i++) {
         var neighbor = neighbors[i];
