@@ -146,10 +146,23 @@ function get_selection_state() {
   return document.getElementById("selection_state").innerText;
 }
 
+/**
+ * Triggers search algorithm when search button is clicked
+ */
 function init_search_button() {
   btn = document.getElementById("search_button");
   btn.onclick = function () {
-    bfs = new BFS(current_start, current_end);
-    bfs.run();
+    var select = document.getElementById("method");
+    var selection = select.options[select.selectedIndex].text;
+    var algos = null;
+    switch (selection) {
+      case "BFS":
+        algos = new BFS(current_start, current_end);
+        break;
+      case "DFS":
+        algos = new DFS(current_start, current_end);
+        break;
+    }
+    algos.run();
   };
 }
