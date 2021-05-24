@@ -4,7 +4,7 @@ class PriorityQueue {
   }
 
   dequeue() {
-    return this.queue.shift()[0];
+    return this.queue.shift();
   }
 
   enqueue(obj, priority) {

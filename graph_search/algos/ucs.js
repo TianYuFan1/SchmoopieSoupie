@@ -1,4 +1,4 @@
-class Greedy {
+class UCS {
   constructor(start, end) {
     this.start = start;
     this.end = end;
@@ -17,7 +17,9 @@ class Greedy {
 
     // While there are still grid cells to explore
     while (this.frontier.get_length() > 0 && !this.is_found) {
-      var current = this.frontier.dequeue()[0];
+      var dequeued = this.frontier.dequeue();
+      var current = dequeued[0];
+      var cost = dequeued[1];
       if (current != this.start) {
         current.style.backgroundColor = "purple";
       }
@@ -26,10 +28,8 @@ class Greedy {
       // Iterate over neighbors
       for (var i = 0; i < neighbors.length; i++) {
         var neighbor = neighbors[i];
-
         if (!this.already_visited.includes(neighbor)) {
-          var heuristic = this.euclidean_heuristic(neighbor);
-          this.frontier.enqueue(neighbor, heuristic);
+          this.frontier.enqueue(neighbor, cost);
           this.already_visited.push(neighbor);
           //   this.came_from[neighbor] = current;
           this.came_from.set(neighbor, current);
@@ -54,14 +54,5 @@ class Greedy {
       }
       current = this.came_from.get(current);
     }
-  }
-
-  euclidean_heuristic(div) {
-    var current_coord = get_grid_cell_coord(div);
-    var goal_coord = get_grid_cell_coord(this.end);
-    var dist_sqr =
-      Math.pow(current_coord[0] - goal_coord[0], 2) +
-      Math.pow(current_coord[1] - goal_coord[1], 2);
-    return Math.sqrt(dist_sqr);
   }
 }
