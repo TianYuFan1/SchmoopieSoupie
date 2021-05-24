@@ -63,6 +63,31 @@ function get_neighbors_of_8_div(grid_cell) {
 }
 
 /**
+ * Calculates the orthogonal neighbors of grid cell
+ * @param {div} grid_cell
+ * @returns the orthogonal neighbors of grid cell
+ */
+function get_neighbors_of_4_div(grid_cell) {
+  coord = get_grid_cell_coord(grid_cell);
+  neighbors = [];
+
+  for (var i = -1; i <= 1; i++) {
+    for (var j = -1; j <= 1; j++) {
+      if (!(i == 0 && j == 0) && !(j == i)) {
+        neighbor_x = coord[0] + i;
+        neighbor_y = coord[1] + j;
+        new_coord = [neighbor_x, neighbor_y];
+        if (is_coord_walkable(new_coord)) {
+          new_div = get_div_from_coord(new_coord);
+          neighbors.push(new_div);
+        }
+      }
+    }
+  }
+  return neighbors;
+}
+
+/**
  * Retrieves the grid cell (div) html element based on index
  * @param {int} index
  * @returns the grid cell (div) html element
