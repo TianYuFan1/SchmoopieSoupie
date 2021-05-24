@@ -42,7 +42,7 @@ function convert_index_to_coord(index) {
  * @param {div} grid_cell
  * @returns the orthogonal and diagonal neighbors of grid cell
  */
-function get_neighbors_of_8(grid_cell) {
+function get_neighbors_of_8_div(grid_cell) {
   coord = get_grid_cell_coord(grid_cell);
   neighbors = [];
 
@@ -53,7 +53,8 @@ function get_neighbors_of_8(grid_cell) {
         neighbor_y = coord[1] + j;
         new_coord = [neighbor_x, neighbor_y];
         if (is_coord_walkable(new_coord)) {
-          neighbors.push([neighbor_x, neighbor_y]);
+          new_div = get_div_from_coord(new_coord);
+          neighbors.push(new_div);
         }
       }
     }
@@ -92,4 +93,8 @@ function is_coord_walkable(coord) {
     return false;
   }
   return true;
+}
+
+function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
 }

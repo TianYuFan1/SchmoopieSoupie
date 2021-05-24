@@ -45,11 +45,10 @@ function create_grid_cell() {
 function handle_grid_cell_click(e) {
   target = e.target;
   // Test cite
-  neighbors = get_neighbors_of_8(target);
+  neighbors = get_neighbors_of_8_div(target);
   for (var i = 0; i < neighbors.length; i++) {
     neighbor = neighbors[i];
     div = get_div_from_coord(neighbor);
-    div.style.backgroundColor = "yellow";
   }
 
   // Test cite
@@ -145,4 +144,12 @@ function set_selection_state(new_text) {
  */
 function get_selection_state() {
   return document.getElementById("selection_state").innerText;
+}
+
+function init_search_button() {
+  btn = document.getElementById("search_button");
+  btn.onclick = function () {
+    bfs = new BFS(current_start, current_end);
+    bfs.run();
+  };
 }
