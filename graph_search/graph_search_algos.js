@@ -89,12 +89,30 @@ function get_div_from_coord(coord) {
 function is_coord_walkable(coord) {
   x = coord[0];
   y = coord[1];
-  if (x < 0 || y < 0 || x >= GRID_DIM || y >= GRID_DIM) {
+  if (x < 0 || y < 0 || x >= GRID_DIM || y >= GRID_DIM || is_wall(coord)) {
     return false;
   }
   return true;
 }
 
+/**
+ * Determines whether the grid cell is a wall
+ * @param {[x,y]} coord
+ * @returns a boolean indicating whether the grid cell is a wall
+ */
+function is_wall(coord) {
+  div = get_div_from_coord(coord);
+  if (div.style.backgroundColor == "black") {
+    return true;
+  }
+  return false;
+}
+
+/**
+ * Sleeps the program for a certain time (ms)
+ * @param {int} ms
+ * @returns none
+ */
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
