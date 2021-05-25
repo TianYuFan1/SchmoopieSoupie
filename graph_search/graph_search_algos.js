@@ -164,11 +164,17 @@ function euclidean_heuristic(current, end) {
   return Math.sqrt(dist_sqr);
 }
 
+/**
+ * Traces a path between start to finish
+ * @param {WeakMap} came_from
+ * @param {div} start
+ * @param {div} end
+ */
 function trace_path(came_from, start, end) {
   var current = end;
   while (current != null) {
     if (current != start && current != end) {
-      current.style.backgroundColor = "blue";
+      current.style.backgroundColor = PATH_CELL_COLOR;
     }
     current = came_from.get(current);
   }

@@ -6,8 +6,7 @@ START_CELL_COLOR = "green";
 END_CELL_COLOR = "red";
 WALL_CELL_COLOR = "black";
 
-START_CELL_COLOR_RGB = "rgb(0, 128, 0)";
-END_CELL_COLOR_RGB = "rgb(255, 0, 0)";
+PATH_CELL_COLOR = "blue";
 
 current_start = null;
 current_end = null;
@@ -163,10 +162,14 @@ function get_neighbor_selection() {
   return select.options[select.selectedIndex].text;
 }
 
+/**
+ * @returns (str) search method selection
+ */
 function get_search_method_selection() {
   var select = document.getElementById("method");
   return select.options[select.selectedIndex].text;
 }
+
 /**
  * Triggers search algorithm when search button is clicked
  */

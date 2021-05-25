@@ -13,10 +13,19 @@ class UninformedSearch extends Search {
     this.came_from.set(this.start, null);
   }
 
+  /**
+   * @param {div} div
+   * @returns whether the div should be visited
+   */
   should_visit(div) {
     return !this.came_from.has(div);
   }
 
+  /**
+   * Add the neighboring div to the frontier
+   * @param {div} neighbor
+   * @param {div} current
+   */
   add_to_exploration(neighbor, current) {
     this.frontier.add(neighbor);
     this.came_from.set(neighbor, current);
@@ -51,8 +60,10 @@ class UninformedSearch extends Search {
           }
         }
       }
+      // Wait for 100ms
       await sleep(100);
     }
+    // Trace the path from beginning to end
     trace_path(this.came_from, this.start, this.end);
   }
 }
