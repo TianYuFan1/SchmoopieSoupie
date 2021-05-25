@@ -1,11 +1,8 @@
-class UninformedSearch {
+class UninformedSearch extends Search {
   constructor(start, end, Frontier) {
-    this.start = start;
-    this.end = end;
-    this.is_found = false;
+    super(start, end);
 
     this.frontier = new Frontier();
-    this.came_from = new WeakMap();
   }
 
   /**
@@ -16,36 +13,13 @@ class UninformedSearch {
     this.came_from.set(this.start, null);
   }
 
-  /**
-   * @returns whether the search is done
-   */
-  is_search_not_done() {
-    return !this.frontier.is_empty() && !this.is_found;
-  }
-
-  is_start(div) {
-    return div == this.start;
-  }
-
-  is_end(div) {
-    return div == this.end;
-  }
-
-  set_div_background(div, color) {
-    div.style.backgroundColor = color;
-  }
-
-  is_already_explored(div) {
-    return this.came_from.has(div);
+  should_visit(div) {
+    return !this.came_from.has(div);
   }
 
   add_to_exploration(neighbor, current) {
     this.frontier.add(neighbor);
     this.came_from.set(neighbor, current);
-  }
-
-  set_found(flag) {
-    this.is_found = flag;
   }
 
   async run() {
@@ -58,7 +32,7 @@ class UninformedSearch {
       var current = this.frontier.get_next();
       // Set div as explored
       if (!this.is_start(current)) {
-        this.set_div_background(current, "purple");
+        set_div_background(current, "purple");
       }
       // Get div neighbors
       var neighbors = get_neighbors(current);
@@ -66,14 +40,14 @@ class UninformedSearch {
       for (var i = 0; i < neighbors.length; i++) {
         var neighbor = neighbors[i];
         // Check if it is already explored
-        if (!this.is_already_explored(neighbor)) {
+        if (this.should_visit(neighbor)) {
           this.add_to_exploration(neighbor, current);
           // Check if div is end
           if (this.is_end(neighbor)) {
             this.set_found(true);
             break;
           } else {
-            this.set_div_background(neighbor, "orange");
+            set_div_background(neighbor, "orange");
           }
         }
       }

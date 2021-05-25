@@ -1,15 +1,12 @@
-class InformedSearch {
+class InformedSearch extends Search {
   constructor(start, end, calculate_gn, calculate_hn, should_visit) {
-    this.start = start;
-    this.end = end;
-    this.is_found = false;
+    super(start, end);
 
     this.calculate_gn = calculate_gn;
     this.calculate_hn = calculate_hn;
     this.should_visit = should_visit;
 
     this.frontier = new PriorityQueue();
-    this.came_from = new WeakMap();
     this.cost_so_far = new WeakMap();
   }
 
@@ -17,26 +14,6 @@ class InformedSearch {
     this.frontier.add(this.start, 0);
     this.came_from.set(this.start, null);
     this.cost_so_far.set(this.start, 0);
-  }
-
-  is_search_not_done() {
-    return !this.frontier.is_empty() && !this.is_found;
-  }
-
-  is_end(div) {
-    return div == this.end;
-  }
-
-  is_start(div) {
-    return div == this.start;
-  }
-
-  set_found(flag) {
-    this.is_found = flag;
-  }
-
-  set_div_background(div, color) {
-    div.style.backgroundColor = color;
   }
 
   async run() {
@@ -51,7 +28,7 @@ class InformedSearch {
       }
 
       if (!this.is_start(current)) {
-        this.set_div_background(current, "purple");
+        set_div_background(current, "purple");
       }
 
       var neighbors = get_neighbors(current);
@@ -67,7 +44,7 @@ class InformedSearch {
           this.frontier.add(neighbor, priority);
           this.came_from.set(neighbor, current);
           if (!this.is_start(neighbor) && !this.is_end(neighbor)) {
-            this.set_div_background(neighbor, "orange");
+            set_div_background(neighbor, "orange");
           }
         }
       }

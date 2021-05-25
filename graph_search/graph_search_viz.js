@@ -147,6 +147,15 @@ function get_selection_state() {
 }
 
 /**
+ * Sets background of div to a color
+ * @param {div} div
+ * @param {string} color
+ */
+function set_div_background(div, color) {
+  div.style.backgroundColor = color;
+}
+
+/**
  * @returns (str) neighbor selection value
  */
 function get_neighbor_selection() {
