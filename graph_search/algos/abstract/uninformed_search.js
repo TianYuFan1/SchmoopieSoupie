@@ -1,4 +1,10 @@
 class UninformedSearch extends Search {
+  /**
+   * Creates an uninformed search
+   * @param {div} start
+   * @param {div} end
+   * @param {*} Frontier
+   */
   constructor(start, end, Frontier) {
     super(start, end);
 
