@@ -22,6 +22,14 @@
     <select name="method" id="method">
       <option value="bfs">BFS</option>
       <option value="dfs">DFS</option>
+      <option value="greedy">Greedy</option>
+      <option value="ucs">UCS</option>
+      <option value="astar">A*</option>
+    </select>
+    <!-- Graph search neighbor selection -->
+    <select name="neighbor" id="neighbor">
+      <option value="4">4</option>
+      <option value="8">8</option>
     </select>
     <!-- Grid container -->
     <div id="grid_container"></div>
@@ -31,6 +39,15 @@
     <script type="text/javascript" src="graph_search_algos.js"></script>
     <script type="text/javascript" src="algos/bfs.js"></script>
     <script type="text/javascript" src="algos/dfs.js"></script>
+    <script type="text/javascript" src="algos/greedy.js"></script>
+    <script type="text/javascript" src="algos/ucs.js"></script>
+    <script type="text/javascript" src="algos/a_star.js"></script>
+    <script type="text/javascript" src="algos/uninformed_search.js"></script>
+    <script type="text/javascript" src="algos/informed_search.js"></script>
     <script type="text/javascript" src="graph_search.js"></script>
+
+    <script type="text/javascript" src="data_struct/priority_queue.js"></script>
+    <script type="text/javascript" src="data_struct/queue.js"></script>
+    <script type="text/javascript" src="data_struct/stack.js"></script>
   </body>
 </html>

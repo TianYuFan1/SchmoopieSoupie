@@ -73,7 +73,7 @@ function get_neighbors_of_4_div(grid_cell) {
 
   for (var i = -1; i <= 1; i++) {
     for (var j = -1; j <= 1; j++) {
-      if (!(i == 0 && j == 0) && !(j == i)) {
+      if (!(Math.abs(j) == Math.abs(i))) {
         neighbor_x = coord[0] + i;
         neighbor_y = coord[1] + j;
         new_coord = [neighbor_x, neighbor_y];
@@ -140,4 +140,36 @@ function is_wall(coord) {
  */
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+/**
+ * @returns the list of neighbors based on user selection
+ */
+function get_neighbors(grid_cell) {
+  var selection = get_neighbor_selection();
+  switch (selection) {
+    case "4":
+      return get_neighbors_of_4_div(grid_cell);
+    case "8":
+      return get_neighbors_of_8_div(grid_cell);
+  }
+}
+
+function euclidean_heuristic(current, end) {
+  var current_coord = get_grid_cell_coord(current);
+  var goal_coord = get_grid_cell_coord(end);
+  var dist_sqr =
+    Math.pow(current_coord[0] - goal_coord[0], 2) +
+    Math.pow(current_coord[1] - goal_coord[1], 2);
+  return Math.sqrt(dist_sqr);
+}
+
+function trace_path(came_from, start, end) {
+  var current = end;
+  while (current != null) {
+    if (current != start && current != end) {
+      current.style.backgroundColor = "blue";
+    }
+    current = came_from.get(current);
+  }
 }

@@ -3,11 +3,11 @@ class PriorityQueue {
     this.queue = [];
   }
 
-  dequeue() {
-    return this.queue.shift();
+  get_next() {
+    return this.queue.shift()[0];
   }
 
-  enqueue(obj, priority) {
+  add(obj, priority) {
     if (this.queue.length == 0) {
       this.queue.push([obj, priority]);
       return;
@@ -24,13 +24,5 @@ class PriorityQueue {
 
   is_empty() {
     return this.queue.length < 1;
-  }
-
-  get_queue() {
-    return this.queue;
-  }
-
-  get_length() {
-    return this.queue.length;
   }
 }

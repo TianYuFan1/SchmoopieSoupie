@@ -147,13 +147,24 @@ function get_selection_state() {
 }
 
 /**
+ * @returns (str) neighbor selection value
+ */
+function get_neighbor_selection() {
+  var select = document.getElementById("neighbor");
+  return select.options[select.selectedIndex].text;
+}
+
+function get_search_method_selection() {
+  var select = document.getElementById("method");
+  return select.options[select.selectedIndex].text;
+}
+/**
  * Triggers search algorithm when search button is clicked
  */
 function init_search_button() {
   btn = document.getElementById("search_button");
   btn.onclick = function () {
-    var select = document.getElementById("method");
-    var selection = select.options[select.selectedIndex].text;
+    selection = get_search_method_selection();
     var algos = null;
     switch (selection) {
       case "BFS":
@@ -161,6 +172,15 @@ function init_search_button() {
         break;
       case "DFS":
         algos = new DFS(current_start, current_end);
+        break;
+      case "Greedy":
+        algos = new Greedy(current_start, current_end);
+        break;
+      case "UCS":
+        algos = new UCS(current_start, current_end);
+        break;
+      case "A*":
+        algos = new AStar(current_start, current_end);
         break;
     }
     algos.run();
