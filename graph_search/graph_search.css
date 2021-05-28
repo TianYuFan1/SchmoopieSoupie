@@ -1,5 +1,8 @@
 /* Note: '#' is unique and '.' can have many */
-
+body {
+  background: #202e38;
+  font-family: "Poppins", sans-serif;
+}
 #grid_container {
   position: relative;
   top: 30px;

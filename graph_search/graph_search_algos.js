@@ -155,6 +155,11 @@ function get_neighbors(grid_cell) {
   }
 }
 
+/**
+ * @param {div} current
+ * @param {div} end
+ * @returns euclidean distance between start and end div
+ */
 function euclidean_heuristic(current, end) {
   var current_coord = get_grid_cell_coord(current);
   var goal_coord = get_grid_cell_coord(end);

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .city {
+        background-color: tomato;
+        color: white;
+        border: 2px solid black;
+        margin: 20px;
+        padding: 20px;
+      }
+
+      .note {
+        font-size: 120%;
+        color: purple;
+      }
+
+      .england {
+        background-color: thistle;
+      }
+
+      #my_header {
+        background-color: lightblue;
+        color: black;
+        padding: 40px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="city" id="england">
+      <h1>London</h1>
+      <p>London is the capital of <span class="note england">England</span></p>
+    </div>
+
+    <div class="city">
+      <h1>Paris</h1>
+      <p>Paris is the capital of <span class="note">France</span></p>
+    </div>
+
+    <div class="city">
+      <h1>Tokyo</h1>
+      <p>Paris is the capital of <span class="note">Japan</span></p>
+    </div>
+
+    <h1 id="my_header">My header</h1>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+
+    <a href="#england">Jump to England</a>
+    <script>
+      function my_function() {
+        var x = document.getElementsByClassName("city");
+        for (var i = 0; i < x.length; i++) {
+          x[i].style.backgroundColor = "black";
+        }
+      }
+
+      function test_id() {
+        document.getElementById("my_header").innerHTML = "Hello World";
+      }
+      my_function();
+      test_id();
+    </script>
+  </body>
+</html>
