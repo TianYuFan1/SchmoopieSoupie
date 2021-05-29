@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="tabs_vertical.css" />
+  </head>
+  <body>
+    <div class="tab">
+      <button
+        class="tablinks"
+        id="default_tab"
+        onclick="open_city(event, 'London')"
+      >
+        London
+      </button>
+      <button class="tablinks" onclick="open_city(event, 'Paris')">
+        Paris
+      </button>
+      <button class="tablinks" onclick="open_city(event, 'Tokyo')">
+        Tokyo
+      </button>
+    </div>
+
+    <div id="London" class="tab_content">
+      <h3>London</h3>
+      <p>London is the capital city of England</p>
+    </div>
+    <div id="Paris" class="tab_content">
+      <h3>Paris</h3>
+      <p>Paris is the capital city of France</p>
+    </div>
+    <div id="Tokyo" class="tab_content">
+      <h3>Tokyo</h3>
+      <p>Tokyo is the capital city of Japan</p>
+    </div>
+
+    <script>
+      function open_city(e, city_name) {
+        var tabcontent, tablinks;
+
+        tabcontent = document.getElementsByClassName("tab_content");
+        for (var i = 0; i < tabcontent.length; i++) {
+          tabcontent[i].style.display = "none";
+        }
+
+        tablinks = document.getElementsByClassName("tablinks");
+        for (var i = 0; i < tablinks.length; i++) {
+          tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+
+        document.getElementById(city_name).style.display = "block";
+        e.currentTarget.className += " active";
+      }
+    </script>
+
+    <script>
+      document.getElementById("default_tab").click();
+    </script>
+  </body>
+</html>

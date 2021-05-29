@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="tab_headers.css" />
+  </head>
+  <body>
+    <!-- tab content -->
+    <div id="london" class="tab_content">
+      <h3>London</h3>
+      <p>London is the capital city of England</p>
+    </div>
+
+    <div id="paris" class="tab_content">
+      <h3>Paris</h3>
+      <p>Paris is the capital city of France</p>
+    </div>
+
+    <div id="tokyo" class="tab_content">
+      <h3>Tokyo</h3>
+      <p>Tokyo is the capital city of Japan</p>
+    </div>
+
+    <div id="oslo" class="tab_content">
+      <h3>Oslo</h3>
+      <p>Oslo is the capital city of Norway</p>
+    </div>
+
+    <!-- tab button -->
+    <div class="tab_bar">
+      <button
+        class="tab_button"
+        id="default"
+        onclick="open_city('london', this, 'red')"
+      >
+        London
+      </button>
+
+      <button class="tab_button" onclick="open_city('paris', this, 'green')">
+        Paris
+      </button>
+
+      <button class="tab_button" onclick="open_city('tokyo', this, 'blue')">
+        Tokyo
+      </button>
+
+      <button class="tab_button" onclick="open_city('oslo', this, 'orange')">
+        Oslo
+      </button>
+    </div>
+
+    <script>
+      function open_city(city_name, btn, color) {
+        var tab_content = document.getElementsByClassName("tab_content");
+        for (var i = 0; i < tab_content.length; i++) {
+          tab_content[i].style.display = "none";
+        }
+
+        var tab_button = document.getElementsByClassName("tab_button");
+        for (var i = 0; i < tab_button.length; i++) {
+          tab_button[i].style.backgroundColor = "";
+        }
+
+        document.getElementById(city_name).style.display = "block";
+        btn.style.backgroundColor = color;
+      }
+
+      document.getElementById("default").click();
+    </script>
+  </body>
+</html>
