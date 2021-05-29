@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="tabs.css" />
+  </head>
+  <body>
+    <div class="tab">
+      <button
+        class="tablinks"
+        id="default_open"
+        onclick="open_city(event, 'London')"
+      >
+        London
+      </button>
+      <button class="tablinks" onclick="open_city(event, 'Paris')">
+        Paris
+      </button>
+      <button class="tablinks" onclick="open_city(event, 'Tokyo')">
+        Tokyo
+      </button>
+    </div>
+
+    <div id="London" class="tabcontent">
+      <span onclick="this.parentElement.style.display='none'" class="topright"
+        >&times</span
+      >
+      <h3>London</h3>
+      <p>London is the capital city of England.</p>
+    </div>
+    <div id="Paris" class="tabcontent">
+      <span onclick="this.parentElement.style.display='none'" class="topright"
+        >&times</span
+      >
+      <h3>Paris</h3>
+      <p>London is the capital city of France.</p>
+    </div>
+    <div id="Tokyo" class="tabcontent">
+      <span onclick="this.parentElement.style.display='none'" class="topright"
+        >&times</span
+      >
+      <h3>Tokyo</h3>
+      <p>London is the capital city of Japan.</p>
+    </div>
+
+    <script>
+      function open_city(e, city_name) {
+        var tabcontent, tablinks;
+
+        // Set all tab content display to none
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (var i = 0; i < tabcontent.length; i++) {
+          tabcontent[i].style.display = "none";
+        }
+
+        // Set all tab links to inactive
+        tablinks = document.getElementsByClassName("tablinks");
+        for (var i = 0; i < tablinks.length; i++) {
+          tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+
+        // Show approapriate tab
+        document.getElementById(city_name).style.display = "block";
+        // Show active approapriate link
+        e.currentTarget.className += " active";
+      }
+    </script>
+
+    <script>
+      document.getElementById("default_open").click();
+    </script>
+  </body>
+</html>
